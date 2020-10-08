@@ -60,6 +60,7 @@ class CurrencyAPIView(views.APIView):
                 to_currency=to_currency,
                 response=response,
             )
+        response.update({"rate": list(response.get("rates").values())[0]})
         return Response(response)
 
 
