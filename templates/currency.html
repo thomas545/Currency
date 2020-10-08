@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          /* border-collapse: collapse; */
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+        }
+        
+        th:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Your Currency Exchange</h1> <br><br>
+    <table>
+        <tr>
+          <th>From Currency</th>
+          <th>To Currency</th>
+          <th>Date</th>
+          <th>Rate</th>
+        </tr>
+        <tr>
+          <td>{{from}}</td>
+          <td>{{to}}</td>
+          <td>{{date}}</td>
+          <td>{{rate}}</td>
+        </tr>
+      </table>
+</body>
+</html>
