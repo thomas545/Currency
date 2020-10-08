@@ -8,11 +8,12 @@ from .models import Reference
 
 class CurrencyAPIView(views.APIView):
     """
-    Get exchange rate between the two currencies on particular date
+    Get exchange rate between the two currencies on particular date.
+    params: /rate?date=2020-10-04&from_currency=USD&to_currency=EUR
     """
 
     def get(self, request, *args, **kwargs):
-        # Receive date, from and to in params to get data from frankfurter API
+        # Receive date, from_currency and to_currency in params to get data from frankfurter API
         date = request.query_params.get("date", None)
         from_curr = request.query_params.get("from_currency", None)
         to_curr = request.query_params.get("to_currency", None)
@@ -42,10 +43,10 @@ class CurrencyAPIView(views.APIView):
         )
 
         if reference:
-            # Get response from our database if there.
+            # Check if data in our database.
             response = reference.first().response
         else:
-            # The response from frankfurter API and convert it to json to save and display it.
+            # frankfurter API response and convert it to json to save and display it.
             response = requests.get(url)
 
             # Check status code.
@@ -63,6 +64,10 @@ class CurrencyAPIView(views.APIView):
 
 
 class CurrencyView(CurrencyAPIView):
+    """
+    Display it in template
+    params: /rates?date=2020-10-04&from_currency=USD&to_currency=EUR
+    """
     renderer_classes = (renderers.TemplateHTMLRenderer,)
     template_name = "currency.html"
 
